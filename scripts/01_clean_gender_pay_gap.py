@@ -1,8 +1,3 @@
-# Generated from: 01_clean_gender_pay_gap.ipynb
-# Converted at: 2026-04-27T17:22:49.791Z
-# Next step (optional): refactor into modules & generate tests with RunCell
-# Quick start: pip install runcell
-
 # =====================================================
 # Script: 01_clean_gender_pay_gap.py
 # Purpose: Clean and aggregate firm-level gender pay gap data to SIC sections

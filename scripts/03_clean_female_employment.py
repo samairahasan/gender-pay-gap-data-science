@@ -1,8 +1,3 @@
-# Generated from: 03_clean_female_employment.ipynb
-# Converted at: 2026-04-27T17:40:45.035Z
-# Next step (optional): refactor into modules & generate tests with RunCell
-# Quick start: pip install runcell
-
 # =====================================================
 # Script: 03_clean_female_employment.py
 # Purpose: Construct average female employment by SIC section for 2024
