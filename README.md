@@ -101,6 +101,7 @@ All outputs are generated programmatically from raw data with **no manual interv
 ---
 
 ## Directory Structure
+
 ├── data
 │   ├── raw        # Original datasets from ONS and Gender Pay Gap Service
 │   └── clean      # Cleaned and harmonised industry-level data
@@ -113,7 +114,6 @@ All outputs are generated programmatically from raw data with **no manual interv
 ├── blog           # Final data-driven blog post
 │
 └── README.md
-
 ---
 
 ## Notes on Interpretation
