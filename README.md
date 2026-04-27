@@ -1,65 +1,126 @@
-# Gender Pay Gaps Across UK Industries
-
-This project investigates why gender pay gaps vary so widely across UK industries.
-
-It examines whether observable industry characteristics — such as average wages, workforce composition, and sector type — help explain cross-industry differences in reported gender pay gaps.
+# Explaining Gender Pay Gaps Across UK Industries
+### Do industry characteristics explain variation in the UK gender pay gap?
 
 ---
 
-## Research Question
-What explains variation in gender pay gaps across UK industries?
+## Goal
 
-In particular, do differences in pay levels, female employment shares, and sectoral characteristics account for observed disparities in industry-level gender pay gaps?
+Gender pay gaps persist across the UK labour market but vary substantially across industries. While economy-wide explanations are well documented, less is known about whether **observable industry characteristics** can explain why some sectors exhibit much larger gender pay gaps than others.
 
----
-
-## Data
-The analysis combines several publicly available UK datasets:
-
-- UK Gender Pay Gap Service: industry-level measures of the hourly gender pay gap  
-- ONS / ASHE: average hourly earnings by industry  
-- ONS workforce statistics: industry-level employment and female participation rates  
-
-All datasets are harmonised using consistent industry classifications (SIC / sector groupings) to ensure comparability.
+The goal of this project is to assess whether differences in **average pay levels**, **female employment**, and **industry sector** help explain cross-industry variation in reported gender pay gaps in the UK.
 
 ---
 
-## Method
+## Solution
 
-The analysis follows a structured data workflow:
+I construct an industry-level dataset combining multiple UK administrative data sources and examine whether differences in industry characteristics are systematically associated with gender pay gaps.
 
-**Raw data → Cleaning → Merging → Industry-level aggregation → Analysis**
+The approach proceeds in three steps:
 
-Company-level observations are aggregated into industry-level averages to allow cross-industry comparison.
+1. Clean and harmonise firm-level and industry-level datasets using consistent SIC section classifications  
+2. Aggregate firm-level gender pay gap data to the industry level  
+3. Analyse cross-industry variation using descriptive statistics and regression analysis  
 
-The analysis proceeds in two steps:
+The empirical framework is **explanatory rather than causal**, and results are interpreted accordingly.
 
-1. **Descriptive analysis** of gender pay gap variation across industries  
-2. **Regression analysis** to examine how industry characteristics relate to the gender pay gap  
+---
 
-The regression framework is explanatory rather than causal, and results are interpreted accordingly.
+## Details
+
+### Inputs and Outputs
+
+**Inputs**
+- Firm-level hourly gender pay gap data from the UK Gender Pay Gap Service (2024)
+- Average gross hourly earnings by industry from ONS / ASHE (2024)
+- Quarterly female employment by industry from ONS Labour Market Statistics (2024)
+
+**Outputs**
+- Harmonised industry-level dataset combining pay gaps, average wages, and female employment
+- Descriptive figures illustrating variation in gender pay gaps across industries
+- Regression results assessing associations between industry characteristics and pay gaps
+
+---
+
+### Description of the Methodology
+
+The raw gender pay gap data are reported at the firm level and include firms operating across a wide range of industries. To enable cross-industry comparison, firms are first assigned to **SIC sections (A–U)** based on their primary SIC codes. Firm-level observations are then aggregated into industry-level averages.
+
+Industry-level average hourly pay is obtained from the Annual Survey of Hours and Earnings (ASHE). Female employment is constructed by averaging quarterly industry-level employment figures for women across 2024. This measure captures **female employment levels rather than employment shares**, reflecting the overall scale of female participation in each industry.
+
+Gender pay gaps are aggregated using **unweighted averages across reporting firms**, meaning that all firms contribute equally regardless of size. This approach reflects reported firm-level outcomes rather than employment-weighted effects.
+
+The analysis proceeds in two stages. First, descriptive statistics and visualisations are used to document how gender pay gaps vary across industries. Second, regression analysis is used to examine whether industry characteristics—such as pay levels and female employment—are systematically related to the magnitude of gender pay gaps.
 
 ---
 
 ## Empirical Framework
 
-I estimate the following regression model:
+The following industry-level regression model is estimated:
 
-PayGap_i = β0 + β1 FemaleShare_i + β2 AvgWage_i + β3 Sector_i + ε_i
+\[
+PayGap_i = \beta_0 + \beta_1 FemaleEmployment_i + \beta_2 AvgWage_i + \beta_3 Sector_i + \varepsilon_i
+\]
 
-Where:
-- i indexes industries
-- coefficients capture associations, not causal effects
+where:
+- \( i \) indexes industries,
+- `FemaleEmployment` measures average female employment levels in 2024,
+- `AvgWage` captures mean hourly pay,
+- coefficients represent **associations rather than causal effects**.
 
 ---
 
-## Project Structure
+## Running Instructions
 
-- `data/raw/`: raw datasets from ONS and Gender Pay Gap Service  
-- `data/cleaned/`: processed and harmonised industry-level dataset  
-- `scripts/`: reproducible Python scripts for cleaning and analysis  
-- `output/figures/`: visualisations and regression outputs  
-- `blog/`: final data-driven blog post  
+### Dependencies
+
+The project is implemented in Python. Required packages are listed in the source files via `import` statements.
+
+General setup guidance for Python environments can be found at:
+- https://tilburgsciencehub.com  
+
+---
+
+### Running the Code
+
+From the command line or terminal:
+
+1. Navigate to the project directory  
+2. Run the scripts sequentially from the `scripts/` directory  
+3. Execute the merging and analysis scripts to reproduce results  
+
+All outputs are generated programmatically from raw data with **no manual intervention**.
+
+---
+
+## Generated Files
+
+- Cleaned industry-level datasets: `data/clean/`
+- Figures and regression outputs: `output/figures/`
+- Final analysis and interpretation: `blog/`
+
+---
+
+## Directory Structure
+├── data
+│   ├── raw        # Original datasets from ONS and Gender Pay Gap Service
+│   └── clean      # Cleaned and harmonised industry-level data
+│
+├── scripts        # Reproducible Python scripts (cleaning, merging, analysis)
+│
+├── output
+│   └── figures    # Visualisations and regression outputs
+│
+├── blog           # Final data-driven blog post
+│
+└── README.md
+
+---
+
+## Notes on Interpretation
+
+- Results reflect **industry-level aggregation** and mask within-industry heterogeneity  
+- Female employment measures capture **levels, not shares**  
+- Findings are **descriptive and explanatory**, not causal estimates  
 
 ---
 
@@ -67,10 +128,4 @@ Where:
 
 All results are fully reproducible.
 
-To replicate:
-1. Run scripts in order inside `/scripts`
-2. Execute data cleaning and merging pipeline
-3. Generate final industry-level dataset
-4. Run analysis script to reproduce figures and regression results
-
-All outputs are generated programmatically from raw data.
+Raw datasets are included for transparency and ease of replication; all analysis uses the cleaned datasets generated by the scripts in this repository.
