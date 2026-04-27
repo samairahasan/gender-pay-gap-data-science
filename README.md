@@ -102,19 +102,20 @@ All outputs are generated programmatically from raw data with **no manual interv
 
 ## Directory Structure
 
-├── data
-│   ├── raw        # Original datasets from ONS and Gender Pay Gap Service
-│   └── clean      # Cleaned and harmonised industry-level data
-│
-├── scripts        # Reproducible Python scripts (cleaning, merging, analysis)
-│
-├── output
-│   └── figures    # Visualisations and regression outputs
-│
-├── blog           # Final data-driven blog post
-│
-└── README.md
----
+
+```txt
+├── data (directory with zipped raw data; 50MB)
+├── gen
+│   ├── data-preparation
+│   │   ├── input
+│   │   ├── output (final output of the data-prep workflow)
+│   │   └── temp (directory with unzipped raw data, and other temp files)
+│   └── figures
+└── src
+    ├── analysis
+    ├── data-preparation [currently available]
+    └── paper
+```
 
 ## Notes on Interpretation
 
