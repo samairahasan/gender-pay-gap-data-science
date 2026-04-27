@@ -1,54 +1,73 @@
 # Generated from: 02_clean_gross_hourly_pay.ipynb
-# Converted at: 2026-04-27T17:31:21.520Z
+# Converted at: 2026-04-27T18:26:25.227Z
 # Next step (optional): refactor into modules & generate tests with RunCell
 # Quick start: pip install runcell
 
+# =====================================================
+# Script: 02_clean_industry_wages.py
+# Purpose: Clean ASHE gross hourly pay data to SIC section (industry) level
+# Input: data/raw/02_gross_hourly_pay_raw_2024.csv
+# Output: data/clean/02_gross_hourly_pay_clean_2024.csv
+# =====================================================
+
 import pandas as pd
 import numpy as np
-# =============================
-# Script: 02_clean_industry_data.py
-# Purpose: Clean ASHE hourly pay data to industry (SIC section) level
-# =============================
+
 # -----------------------------
 # 1. File paths
 # -----------------------------
-RAW_PATH = "data/raw/02 - gross hourly pay 2024.csv"
-OUT_PATH = "data/clean/industry_pay_clean.csv"
+RAW_PATH = "data/raw/02_gross_hourly_pay_raw_2024.csv"
+OUT_PATH = "data/clean/02_gross_hourly_pay_clean_2024.csv"
+
 # -----------------------------
 # 2. Load raw ASHE data
 # -----------------------------
+# ONS ASHE tables contain metadata rows, so header starts at row 5
 df = pd.read_csv(RAW_PATH, header=4)
+
 # -----------------------------
 # 3. Strip whitespace from column names
 # -----------------------------
 df.columns = df.columns.str.strip()
+
 # -----------------------------
-# 4. Keep SIC SECTION rows only
+# 4. Keep SIC section rows only
 # -----------------------------
 # SIC sections are single letters A–U
-df = df[df["Code"].astype(str).str.match(r'^[A-U]$')]
+df = df[df["Code"].astype(str).str.match(r"^[A-U]$")]
+
 # -----------------------------
 # 5. Keep only relevant variables
 # -----------------------------
 df = df[["Code", "Mean"]].copy()
-df = df.rename(columns={"Code": "sic_section", "Mean": "avg_hourly_pay"})
+df = df.rename(
+    columns={
+        "Code": "sic_section",
+        "Mean": "avg_hourly_pay"
+    }
+)
+
 # -----------------------------
 # 6. Drop missing or invalid values
 # -----------------------------
 df["avg_hourly_pay"] = pd.to_numeric(df["avg_hourly_pay"], errors="coerce")
 df = df.dropna(subset=["avg_hourly_pay"])
+
 # -----------------------------
 # 6b. Drop any remaining duplicates
 # -----------------------------
 df = df.drop_duplicates(subset=["sic_section"])
+
 # -----------------------------
 # 7. Validation checks
 # -----------------------------
 assert df["sic_section"].is_unique, "SIC sections are not unique"
 assert df.shape[0] <= 21, "Too many SIC sections detected"
+
 # -----------------------------
 # 8. Save cleaned dataset
 # -----------------------------
 df.to_csv(OUT_PATH, index=False)
+
 print("✓ Clean industry-level hourly pay data saved")
 print(df.sort_values("avg_hourly_pay", ascending=False).head())
