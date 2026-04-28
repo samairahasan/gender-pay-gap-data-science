@@ -1,8 +1,3 @@
-# Generated from: 04_merge.ipynb
-# Converted at: 2026-04-28T09:09:28.682Z
-# Next step (optional): refactor into modules & generate tests with RunCell
-# Quick start: pip install runcell
-
 # =====================================================
 # Script: 04_merge.py
 # Purpose: Merge three cleaned industry-level datasets,
