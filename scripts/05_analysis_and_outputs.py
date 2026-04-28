@@ -1,8 +1,3 @@
-# Generated from: 05_analysis_and_outputs.ipynb
-# Converted at: 2026-04-28T09:56:57.736Z
-# Next step (optional): refactor into modules & generate tests with RunCell
-# Quick start: pip install runcell
-
 # =====================================================
 # Script: 05_analysis_and_outputs.py
 # Purpose: Load merged industry dataset, produce
