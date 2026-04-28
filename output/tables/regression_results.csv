@@ -1,0 +1,4 @@
+Variable,Coefficient,Std_Error,t_stat,p_value,CI_Lower_95,CI_Upper_95,Significance
+Intercept,-2.95,4.2858,-0.688,0.506,-12.383,6.483,
+AvgWage,0.7324,0.1836,3.988,0.002,0.3282,1.1366,***
+FemaleEmployment,-0.001,0.001,-1.093,0.298,-0.0032,0.0011,
