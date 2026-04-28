@@ -104,18 +104,35 @@ All outputs are generated programmatically from raw data with **no manual interv
 
 
 ```txt
-├── data (directory with zipped raw data; 50MB)
-├── gen
-│   ├── data-preparation
-│   │   ├── input
-│   │   ├── output (final output of the data-prep workflow)
-│   │   └── temp (directory with unzipped raw data, and other temp files)
-│   └── figures
-└── src
-    ├── analysis
-    ├── data-preparation [currently available]
-    └── paper
-```
+├── data
+│   ├── clean
+│   │   ├── 01_gender_pay_gap_clean_2024.csv
+│   │   ├── 02_gross_hourly_pay_clean_2024.csv
+│   │   ├── 03_female_employment_clean_2024.csv
+│   │   └── 04_merged_industry_dataset_2024.csv
+│   ├── raw
+│   │   ├── 01_gender_pay_gap_raw_2024.csv
+│   │   ├── 02_gross_hourly_pay_raw_2024.csv
+│   │   └── 03_female_employment_raw_2024.csv
+│   └── uk_gender_pay_gap_industry_2024.db
+├── output
+│   ├── figures
+│   │   ├── pay_gap_by_industry_bar.png
+│   │   ├── pay_gap_vs_avg_wage_scatter.png
+│   │   ├── pay_gap_vs_female_employment_scatter.png
+│   │   ├── regression_coefficients_plot.png
+│   └── tables
+│       ├── correlation_matrix.csv
+│       ├── regression_results.csv
+│       └── summary_statistics.csv
+├── scripts
+│   ├── 01_clean_gender_pay_gap.py
+│   ├── 02_clean_gross_hourly_pay.py
+│   ├── 03_clean_female_employment.py
+│   ├── 04_merge.py
+│   └── 05_analysis_and_outputs.py
+└── README.md
+
 
 ## Notes on Interpretation
 
