@@ -1,5 +1,5 @@
 # =====================================================
-# Script: 02_clean_industry_wages.py
+# Script: 02_clean_gross_hourly_pay.py
 # Purpose: Clean ASHE gross hourly pay data to SIC section (industry) level
 # Input: data/raw/02_gross_hourly_pay_raw_2024.csv
 # Output: data/clean/02_gross_hourly_pay_clean_2024.csv
