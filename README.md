@@ -4,6 +4,7 @@ Do industry characteristics help explain variation in the UK gender pay gap?
 
 ## 📖 Blog Post
 https://hackmd.io/@samairahasan/H1OjthlRWl
+
 ---
 
 ## Goal
@@ -231,12 +232,26 @@ python scripts/05_analysis_and_outputs.py
 
 ```text
 ├── data
-│   ├── raw
 │   ├── clean
+│   │   ├── 01_gender_pay_gap_clean_2024.csv
+│   │   ├── 02_gross_hourly_pay_clean_2024.csv
+│   │   ├── 03_female_employment_clean_2024.csv
+│   │   └── 04_merged_industry_dataset_2024.csv
+│   ├── raw
+│   │   ├── 01_gender_pay_gap_raw_2024.csv
+│   │   ├── 02_gross_hourly_pay_raw_2024.csv
+│   │   └── 03_female_employment_raw_2024.csv
 │   └── uk_gender_pay_gap_industry_2024.db
 ├── output
 │   ├── figures
+│   │   ├── pay_gap_by_industry_bar.png
+│   │   ├── pay_gap_vs_avg_wage_scatter.png
+│   │   ├── pay_gap_vs_female_employment_scatter.png
+│   │   ├── regression_coefficients_plot.png
 │   └── tables
+│       ├── correlation_matrix.csv
+│       ├── regression_results.csv
+│       └── summary_statistics.csv
 ├── scripts
 │   ├── 01_clean_gender_pay_gap.py
 │   ├── 02_clean_gross_hourly_pay.py
