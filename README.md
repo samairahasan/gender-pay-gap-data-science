@@ -2,6 +2,8 @@
 
 Do industry characteristics help explain variation in the UK gender pay gap?
 
+## 📖 Blog Post
+https://hackmd.io/@samairahasan/H1OjthlRWl
 ---
 
 ## Goal
@@ -232,19 +234,15 @@ python scripts/05_analysis_and_outputs.py
 │   ├── raw
 │   ├── clean
 │   └── uk_gender_pay_gap_industry_2024.db
-
 ├── output
 │   ├── figures
 │   └── tables
-
 ├── scripts
 │   ├── 01_clean_gender_pay_gap.py
 │   ├── 02_clean_gross_hourly_pay.py
 │   ├── 03_clean_female_employment.py
 │   ├── 04_merge.py
 │   └── 05_analysis_and_outputs.py
-
-├── blog
 ├── runAll.py
 └── README.md
 ```
